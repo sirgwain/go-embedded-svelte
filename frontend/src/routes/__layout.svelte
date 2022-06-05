@@ -11,10 +11,9 @@
 	let user: User | undefined;
 </script>
 
-{#if user}
-	<Menu {user} />
-{/if}
-
-<div class="m-5">
-	<slot />
-</div>
+<main class="m-5">
+	{#if user}
+		<Menu {user} />
+	{/if}
+	<slot>This is the main content</slot>
+</main>

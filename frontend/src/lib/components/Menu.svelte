@@ -1,26 +1,29 @@
 <script lang="ts">
 	import type { User } from '$lib/types/User';
+	import DarkModeToggler from './DarkModeToggler.svelte';
+
+	export let user: User;
 
 	export let menuItems = [
 		['Home', '/'],
-		['Other Page', '/other']
+		['Other Page', '/other'],
+		[`Welcome, ${user.username}`, '/logout']
 	];
-
-	export let user: User;
 </script>
 
-<div class="flex justify-start">
-	{#each menuItems as item}
-		<a
-			href={item[1]}
-			class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
-			>{item[0]}</a
-		>
-	{/each}
-
-	<a
-		href="/logout"
-		class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
-		>Welcome, {user.username}</a
-	>
+<div class="flex">
+	<div class="grow">
+		<div class="justify-start ">
+			{#each menuItems as item}
+				<a
+					href={item[1]}
+					class="last:float-right rounded-lg px-3 py-2 text-slate-700 dark:text-gray-100 font-medium hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-700 dark:hover:text-gray-300"
+					>{item[0]}</a
+				>
+			{/each}
+		</div>
+	</div>
+	<div class="flex-none">
+		<DarkModeToggler />
+	</div>
 </div>

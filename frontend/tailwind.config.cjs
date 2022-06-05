@@ -5,7 +5,9 @@ const config = {
 		extend: {}
 	},
 
-	plugins: [require('@tailwindcss/forms')]
+	plugins: [require('@tailwindcss/forms')],
+
+	darkMode: 'class'
 };
 
 module.exports = config;
